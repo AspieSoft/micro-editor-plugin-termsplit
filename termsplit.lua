@@ -1,7 +1,4 @@
-local micro = import("micro")
 local config = import("micro/config")
-local shell = import("micro/shell")
-local fmt = import("fmt")
 
 function init()
   config.MakeCommand("tsplit", termTab, config.NoComplete)
