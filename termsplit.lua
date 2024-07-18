@@ -18,7 +18,6 @@ function init()
   end
 end
 
-
 function termTab(bp)
   bp:HSplitAction()
 
