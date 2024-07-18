@@ -1,11 +1,9 @@
 local micro = import("micro")
 local config = import("micro/config")
 local shell = import("micro/shell")
+local path = import("path")
 
 function init()
-  config.MakeCommand("git-commit", gitCommit, config.NoComplete)
-
-
   config.MakeCommand("tsplit", termTab, config.NoComplete)
   config.TryBindKey("Alt-p", "command:tsplit", false)
 
@@ -18,25 +16,6 @@ function init()
   if config.GetGlobalOption("ide") then
     ideInit(micro.CurPane())
   end
-end
-
-function gitCommit(bp, args)
-  _, err = shell.ExecCommand("ls", ".git")
-  if err then
-    -- todo: git init
-    return
-  end
-
-  local msg = "Updated"
-  if #args >= 1 then
-    msg = args[1]
-  end
-
-  -- git commit -a -m "Updated"
-  -- git push
-
-  shell.ExecCommand("git", "commit", "-a", "-m", msg)
-  shell.ExecCommand("git", "push")
 end
 
 
