@@ -27,10 +27,15 @@ function gitCommit(bp, args)
     return
   end
 
+  local msg = "Updated"
+  if #args >= 1 then
+    msg = args[1]
+  end
+
   -- git commit -a -m "Updated"
   -- git push
 
-  shell.ExecCommand("git", "commit", "-a", "-m", args[1])
+  shell.ExecCommand("git", "commit", "-a", "-m", msg)
 end
 
 
