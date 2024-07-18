@@ -21,8 +21,18 @@ function init()
 end
 
 function gitCommit(bp, args)
-  
+  _, err = shell.ExecCommand("ls", ".git")
+  if err then
+    -- todo: git init
+    return
+  end
+
+  -- git commit -a -m "Updated"
+  -- git push
+
+  shell.ExecCommand("git", "commit", "-a", "-m", args[1])
 end
+
 
 function termTab(bp)
   bp:HSplitAction()
