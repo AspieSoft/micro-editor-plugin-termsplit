@@ -36,6 +36,7 @@ function gitCommit(bp, args)
   -- git push
 
   shell.ExecCommand("git", "commit", "-a", "-m", msg)
+  shell.ExecCommand("git", "push")
 end
 
 
